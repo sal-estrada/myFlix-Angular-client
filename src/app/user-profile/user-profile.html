@@ -1,0 +1,112 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="goToMovies()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>My Profile</span>
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-button (click)="goToMovies()">
+    <mat-icon>movie</mat-icon>
+    All Movies
+  </button>
+  <button mat-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    Logout
+  </button>
+</mat-toolbar>
+
+<div class="profile-page">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>My Profile</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      @if (user()) {
+        <form [formGroup]="profileForm">
+          <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" readonly>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" required>
+            @if (profileForm.get('email')?.hasError('email')) {
+              <mat-error>Please enter a valid email</mat-error>
+            }
+            @if (profileForm.get('email')?.hasError('required')) {
+              <mat-error>Email is required</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Birthday</mat-label>
+            <input matInput type="date" formControlName="birthday">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>New Password</mat-label>
+            <input matInput type="password" formControlName="password">
+          </mat-form-field>
+        </form>
+      }
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button 
+        mat-raised-button 
+        color="primary" 
+        (click)="updateUser()"
+        [disabled]="isLoading() || profileForm.invalid"
+      >
+        Update Profile
+      </button>
+      
+      <button 
+        mat-raised-button 
+        (click)="logout()"
+      >
+        Logout
+      </button>
+      
+      <button 
+        mat-raised-button 
+        color="warn" 
+        (click)="deleteAccount()"
+      >
+        Delete Account
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <!-- Favorite Movies Section -->
+  <div class="favorites-section">
+    <h2>My Favorite Movies</h2>
+    
+    @if (favoriteMovies().length > 0) {
+      <div class="movies-grid">
+        @for (movie of favoriteMovies(); track movie._id) {
+          <mat-card class="movie-card">
+            <img [src]="movie.ImagePath" [alt]="movie.Title" class="movie-poster">
+            <mat-card-content>
+              <h3>{{ movie.Title }}</h3>
+              <p class="director">Directed by: {{ movie.Director.Name }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button 
+                mat-icon-button 
+                color="warn"
+                (click)="removeFavorite(movie._id)"
+                matTooltip="Remove from favorites"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
+    } @else {
+      <p class="no-favorites">No favorite movies yet. Start adding some from the movies page!</p>
+    }
+  </div>
+</div>

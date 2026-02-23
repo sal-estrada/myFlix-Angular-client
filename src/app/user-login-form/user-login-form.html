@@ -23,6 +23,7 @@
           type="password"
           placeholder="Password"
           required
+          (keydown.enter)="loginUser()"
         />
       </mat-form-field>
     </form>

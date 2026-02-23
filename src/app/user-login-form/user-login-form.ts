@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -28,6 +29,7 @@ export class UserLoginForm {
   private dialogRef = inject(MatDialogRef<UserLoginForm>);
   private snackBar = inject(MatSnackBar);
   private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
 
   isLoading = signal(false);
 
@@ -51,8 +53,9 @@ export class UserLoginForm {
         localStorage.setItem('user', JSON.stringify(result.user));
         localStorage.setItem('token', result.token);
         this.isLoading.set(false);
-        this.snackBar.open('Login successful!', 'OK', { duration: 2000 });
         this.dialogRef.close();
+        this.snackBar.open('Login successful!', 'OK', { duration: 2000 });
+        this.router.navigate(['/movies']);
       },
       error: (error) => {
         this.isLoading.set(false);

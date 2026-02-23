@@ -1,0 +1,34 @@
+<mat-toolbar color="primary" class="navbar">
+  <div class="navbar-content">
+    <div class="logo">
+      <img src="favicon.svg" alt="CineVault" class="logo-icon">
+      <span>CineVault</span>
+    </div>
+    <div class="auth-buttons">
+      <button mat-raised-button color="accent" (click)="openUserLoginDialog()">Login</button>
+      <button mat-raised-button color="accent" (click)="openUserRegistrationDialog()">Sign Up</button>
+    </div>
+  </div>
+</mat-toolbar>
+
+<div class="welcome-container">
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="find">FIND MOVIES</span>
+        <span class="highlight">TV SHOWS AND MORE</span>
+      </h1>
+      <p class="hero-description">
+        Discover the best movies and TV shows from around the world. Stream in HD and enjoy unlimited entertainment.
+      </p>
+    </div>
+    <div class="featured-posters">
+      <div class="poster-item dune">
+        <img [src]="dunePoster()" alt="Star Wars" class="movie-poster">
+      </div>
+      <div class="poster-item interstellar">
+        <img [src]="interstellarPoster()" alt="Mercy" class="movie-poster">
+      </div>
+    </div>
+  </div>
+</div>

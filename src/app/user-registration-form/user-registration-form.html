@@ -13,6 +13,12 @@
           type="text"
           required
         />
+        @if (registrationForm.get('username')?.hasError('required') && registrationForm.get('username')?.touched) {
+          <mat-error>Username is required</mat-error>
+        }
+        @if (registrationForm.get('username')?.hasError('minlength') && registrationForm.get('username')?.touched) {
+          <mat-error>Username must be at least 5 characters</mat-error>
+        }
       </mat-form-field>
 
       <mat-form-field appearance="fill">
@@ -24,6 +30,12 @@
           placeholder="Password"
           required
         />
+        @if (registrationForm.get('password')?.hasError('required') && registrationForm.get('password')?.touched) {
+          <mat-error>Password is required</mat-error>
+        }
+        @if (registrationForm.get('password')?.hasError('notAlphanumeric') && registrationForm.get('password')?.touched) {
+          <mat-error>Password must contain only letters and numbers</mat-error>
+        }
       </mat-form-field>
 
       <mat-form-field appearance="fill">

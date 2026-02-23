@@ -1,0 +1,76 @@
+.navbar {
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 32px;
+  width: 32px;
+  margin-right: 12px;
+}
+
+.navbar-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px 40px;
+  gap: 20px;
+  scroll-behavior: smooth;
+  
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #00d4ff 0%, #ff006b 100%);
+    border-radius: 4px;
+    
+    &:hover {
+      background: linear-gradient(90deg, #ff006b 0%, #00d4ff 100%);
+    }
+  }
+}
+
+.carousel-card {
+  flex: 0 0 250px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  backdrop-filter: blur(10px);
+  
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+mat-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+}
+
+mat-icon {
+  user-select: none;
+  transition: color 0.2s ease;
+
+  &.favorite {
+    color: #ff006b;
+  }
+
+  &:hover {
+    opacity: 0.7;
+    color: #00d4ff;
+  }
+}
