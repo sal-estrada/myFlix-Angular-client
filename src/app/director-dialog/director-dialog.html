@@ -1,5 +1,5 @@
-<h2 mat-dialog-title>{{ data.name }}</h2>
-<mat-dialog-content>
+<h2 mat-dialog-title id="director-dialog-title">{{ data.name }}</h2>
+<mat-dialog-content aria-labelledby="director-dialog-title">
   <p><strong>Bio:</strong> {{ data.bio }}</p>
   @if (data.birth) {
     <p><strong>Birth:</strong> {{ data.birth }}</p>

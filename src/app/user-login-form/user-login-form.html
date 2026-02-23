@@ -3,7 +3,7 @@
     <mat-card-title>Log In</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" aria-label="Log in form">
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
         <input
@@ -11,6 +11,7 @@
           formControlName="username"
           placeholder="Username"
           type="text"
+          autocomplete="username"
           required
         />
       </mat-form-field>
@@ -22,6 +23,7 @@
           formControlName="password"
           type="password"
           placeholder="Password"
+          autocomplete="current-password"
           required
           (keydown.enter)="loginUser()"
         />

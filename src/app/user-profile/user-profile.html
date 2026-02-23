@@ -1,5 +1,5 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="goToMovies()">
+<mat-toolbar color="primary" role="banner" aria-label="Profile navigation">
+  <button mat-icon-button (click)="goToMovies()" aria-label="Back to movies">
     <mat-icon>arrow_back</mat-icon>
   </button>
   <span>My Profile</span>
@@ -22,15 +22,15 @@
     
     <mat-card-content>
       @if (user()) {
-        <form [formGroup]="profileForm">
+        <form [formGroup]="profileForm" aria-label="Profile form">
           <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput formControlName="username" readonly>
+            <input matInput formControlName="username" autocomplete="username" readonly>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput type="email" formControlName="email" required>
+            <input matInput type="email" formControlName="email" autocomplete="email" required>
             @if (profileForm.get('email')?.hasError('email')) {
               <mat-error>Please enter a valid email</mat-error>
             }
@@ -41,12 +41,12 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Birthday</mat-label>
-            <input matInput type="date" formControlName="birthday">
+            <input matInput type="date" formControlName="birthday" autocomplete="bday">
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>New Password</mat-label>
-            <input matInput type="password" formControlName="password">
+            <input matInput type="password" formControlName="password" autocomplete="new-password">
           </mat-form-field>
         </form>
       }
@@ -98,6 +98,7 @@
                 color="warn"
                 (click)="removeFavorite(movie._id)"
                 matTooltip="Remove from favorites"
+                aria-label="Remove from favorites"
               >
                 <mat-icon>delete</mat-icon>
               </button>

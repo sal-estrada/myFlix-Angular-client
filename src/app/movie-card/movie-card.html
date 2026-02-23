@@ -1,5 +1,5 @@
-<mat-toolbar color="primary" class="navbar">
-  <img src="favicon.svg" alt="CineVault" class="navbar-logo">
+<mat-toolbar color="primary" class="navbar" role="banner" aria-label="Movies navigation">
+    <img src="favicon.svg" alt="CineVault" class="navbar-logo">
   <span class="navbar-title">CineVault</span>
   <span style="flex: 1 1 auto;"></span>
   <button mat-button (click)="goToProfile()">
@@ -12,7 +12,7 @@
   </button>
 </mat-toolbar>
 
-<div class="carousel-container">
+<div class="carousel-container" role="region" aria-label="Movie carousel">
     @for (movie of movies(); track $index) {
         <mat-card class="carousel-card">
             <mat-card-header>
@@ -42,14 +42,20 @@
                 >
                     Synopsis
                 </button>
-                <mat-icon 
+                <button
+                    mat-icon-button
+                    type="button"
                     (click)="toggleFavorite(movie._id)"
-                    [class.favorite]="isFavorite(movie._id)"
-                    [@favoriteAnimation]="isFavorite(movie._id)"
-                    style="cursor: pointer;"
+                    [attr.aria-pressed]="isFavorite(movie._id)"
+                    [attr.aria-label]="isFavorite(movie._id) ? 'Remove from favorites' : 'Add to favorites'"
                 >
-                    {{ isFavorite(movie._id) ? 'favorite' : 'favorite_border' }}
-                </mat-icon>
+                    <mat-icon
+                        [class.favorite]="isFavorite(movie._id)"
+                        [@favoriteAnimation]="isFavorite(movie._id)"
+                    >
+                        {{ isFavorite(movie._id) ? 'favorite' : 'favorite_border' }}
+                    </mat-icon>
+                </button>
             </mat-card-actions>
         </mat-card>
     }
