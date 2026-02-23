@@ -1,59 +1,81 @@
-# MyFlixAngularClient
+# CineVault (myFlix Angular Client)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+Modern Angular frontend for the CineVault movie discovery app. This client provides authentication, movie browsing, favorites management, and a dark themed UI with Angular Material.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Authentication with JWT (login and registration)
+- Movie catalog with poster images
+- Favorite movies management with animated toggle
+- Profile management (update info, delete account)
+- Standalone components with signals and modern control flow
+- Dark UI theme with custom dialogs
 
-```bash
-ng serve
-```
+## Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Angular 21 (standalone, signals)
+- Angular Material 21
+- RxJS 7
+- TypeScript 5
 
-## Code scaffolding
+## Getting Started
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Prerequisites
 
-```bash
-ng generate component component-name
-```
+- Node.js (recommended: latest LTS)
+- npm 11+
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Install
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Run
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+Open http://localhost:4200
 
-For end-to-end (e2e) testing, run:
+## Configuration
 
-```bash
-ng e2e
+The API base URL is defined in `src/environments/environment.ts`:
+
+```ts
+export const environment = {
+	production: false,
+	apiUrl: 'https://mymov-e6f0370bab7c.herokuapp.com/'
+};
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Update `apiUrl` to point to your backend if needed.
 
-## Additional Resources
+## Scripts
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `npm start` - start the dev server
+- `npm run build` - production build
+- `npm run watch` - build in watch mode
+- `npm test` - run unit tests (Vitest)
+
+## Routes
+
+- `/welcome` - landing page
+- `/movies` - movie catalog
+- `/profile` - user profile and favorites
+
+## Project Structure (high level)
+
+- `src/app` - components, services, routes
+- `src/assets` and `public/assets` - static assets (posters, logo)
+- `src/environments` - environment configuration
+
+## Notes
+
+- This project uses Angular Material with a custom dark theme.
+- Dialog content is intentionally non-scrollable for a clean presentation.
+
+## License
+
+No license specified.
