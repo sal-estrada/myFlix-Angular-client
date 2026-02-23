@@ -76,17 +76,3 @@ mat-icon {
     color: #00d4ff;
   }
 }
-
-@media (min-width: 769px) {
-  .carousel-container {
-    overflow-y: hidden;
-  }
-}
-
-@media (max-width: 768px) {
-  .carousel-container {
-    padding: 20px 16px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
