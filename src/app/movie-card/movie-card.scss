@@ -20,6 +20,7 @@
   padding: 20px 40px;
   gap: 20px;
   scroll-behavior: smooth;
+  background: linear-gradient(135deg, #0a0a12 0%, #18071e 100%);
   min-height: 100dvh;
   
   &::-webkit-scrollbar {
@@ -83,39 +84,9 @@ mat-icon {
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    padding: 0 12px;
-    height: auto;
-    min-height: 60px;
-
-    .navbar-logo {
-      height: 24px;
-      width: 24px;
-      margin-right: 8px;
-    }
-
-    .navbar-title {
-      font-size: 16px;
-    }
-  }
-
   .carousel-container {
     padding: 20px 16px;
-    gap: 12px;
-    flex-direction: column;
-    overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    min-height: 100dvh;
-  }
-
-  .carousel-card {
-    flex: 1 1 auto;
-    width: 100%;
-    max-width: 100%;
-  }
-
-  mat-card-actions {
-    flex-wrap: wrap;
   }
 }
