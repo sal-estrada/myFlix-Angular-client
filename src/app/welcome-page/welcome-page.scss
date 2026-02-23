@@ -215,8 +215,10 @@
     padding: 20px 20px 0 20px;
     padding-top: 20px;
     min-height: auto;
-    max-height: calc(100vh - 60px);
+    height: 100dvh;
+    max-height: 100dvh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .hero-section {
